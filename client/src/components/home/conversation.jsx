@@ -8,8 +8,10 @@ import convertDate from "../../utils/convertDate";
 import ConversationFooter from "./conversationFooter";
 import ConversationHeader from "./conversationHeader";
 import ScrollToBottom from "./scrollToBottom";
+import useListenMessages from "../../hooks/useListenMessages";
 
 const Conversation = () => {
+  useListenMessages();
   const selectedUserToChat = useSelector(
     (state) => state.user.selectedUserToChat
   );
@@ -20,6 +22,7 @@ const Conversation = () => {
   );
 
   const endOfMessagesRef = useRef(null);
+
   useEffect(() => {
     endOfMessagesRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [data?.messages]);

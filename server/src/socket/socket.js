@@ -18,6 +18,10 @@ const io = new Server(server, {
 
 const userSocketMap = {};
 
+export const getReceiverSocketId = (receiverId) => {
+  return userSocketMap[receiverId];
+};
+
 io.on("connection", (socket) => {
   console.log("New connection: " + socket.id);
 
@@ -32,5 +36,5 @@ io.on("connection", (socket) => {
     io.emit("getOnlineUsers", Object.keys(userSocketMap));
   });
 });
- 
+
 export { app, io, server };
